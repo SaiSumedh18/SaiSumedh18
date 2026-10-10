@@ -1,0 +1,38 @@
+name: Refresh profile
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - profile.json
+      - scripts/**
+      - .github/workflows/update-profile.yml
+permissions:
+  contents: write
+concurrency:
+  group: profile-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build profile from public activity
+        env:
+          PROFILE_USERNAME: ${{ github.repository_owner }}
+        run: python scripts/build_profile.py --fetch
+      - name: Commit updated assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md assets/profile.svg assets/contributions.svg data/contributions.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: refresh profile assets [skip ci]'
+            git push
+          fi

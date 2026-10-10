@@ -1,0 +1,45 @@
+{
+  "username": "SaiSumedh18",
+  "name": "Sai Sumedh Kaveti",
+  "tagline": "Software engineering \u00b7 DevOps \u00b7 From idea to reliable delivery",
+  "focus": [
+    "Full-stack applications",
+    "Automation & CI pipelines",
+    "Containerized delivery"
+  ],
+  "stack": [
+    "TypeScript",
+    "React",
+    "Node.js / Express",
+    "PostgreSQL",
+    "Docker",
+    "GitHub Actions"
+  ],
+  "projects": [
+    {
+      "name": "sai-portfolio",
+      "url": "https://github.com/SaiSumedh18/sai-portfolio",
+      "description": "Sai Sumedh Kaveti \u2014 software engineering portfolio"
+    },
+    {
+      "name": "taskflow",
+      "url": "https://github.com/SaiSumedh18/taskflow",
+      "description": "Full-stack team task management platform with React, TypeScript, Node.js, Express, PostgreSQL, JWT authentication, Kanban workflows, automated testing, Docker, and CI."
+    },
+    {
+      "name": "finsight",
+      "url": "https://github.com/SaiSumedh18/finsight",
+      "description": "Full-stack personal finance dashboard with JWT authentication, PostgreSQL analytics, automated testing, Docker, and GitHub Actions CI."
+    },
+    {
+      "name": "InsightChat AI",
+      "url": "https://github.com/SaiSumedh18/insightchat-ai",
+      "description": "Full-stack CSV analytics workspace with React, TypeScript, Express, PostgreSQL, and a dataset-grounded AI assistant with streaming responses."
+    }
+  ],
+  "links": {
+    "GitHub": "https://github.com/SaiSumedh18",
+    "Portfolio": "https://saisumedhkaveti.work/",
+    "LinkedIn": "https://www.linkedin.com/in/saisumedhkaveti/"
+  }
+}
