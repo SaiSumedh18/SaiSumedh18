@@ -58,14 +58,14 @@ def header(config):
     for i, value in enumerate(config['focus'][:3]):
         if len(value) > 43:
             raise ValueError('Focus labels must be <=43 characters')
-        b += f'<text class="reveal" style="animation-delay:{.2+i*.12}s" x="32" y="{202+i*26}" fill="#c9d1d9" font-size="14"><tspan fill="#56d4bd">0{i+1}</tspan>  {ESC(value)}</text>'
-    for i, (x, y, label) in enumerate([(650,195,'BUILD'),(798,195,'SHIP'),(724,260,'OPERATE')]):
-        b += f'<g class="reveal" style="animation-delay:{.3+i*.2}s"><rect x="{x}" y="{y}" width="116" height="38" rx="8" fill="#161b22" stroke="#56d4bd"/><text x="{x+58}" y="{y+24}" text-anchor="middle" fill="#c9d1d9" font-size="12">{label}</text></g>'
-    b += '<path d="M766 214h32m-58 19v27m58-27v27" stroke="#30363d" fill="none"/>'
+        b += f'<text class="reveal" style="animation-delay:{.2+i*.12}s" x="32" y="{202+i*26}" fill="#c9d1d9" font-size="14"><tspan fill="#58a6ff">0{i+1}</tspan>  {ESC(value)}</text>'
+    monogram = [" SSSSS   KK   KK", "SS       KK  KK ", " SSSSS   KKKKK  ", "     SS  KK  KK ", " SSSSS   KK   KK"]
+    for i, line in enumerate(monogram):
+        b += f'<text class="reveal" style="animation-delay:{.3+i*.13}s" xml:space="preserve" x="650" y="{204+i*20}" fill="#79c0ff" font-size="20">{ESC(line)}</text>'
     return svg(b, 330, name + ': ' + config['tagline'])
 
 def heatmap(days):
-    colors = ['#161b22','#0e443c','#176d5b','#26a88b','#56d4bd']
+    colors = ['#161b22','#173152','#24558a','#388bfd','#79c0ff']
     b = '<text x="32" y="38" fill="#79c0ff" font-size="13">$ activity --last-year</text>'
     if not days:
         b += '<text x="32" y="85" fill="#c9d1d9" font-size="16">Contribution calendar ready to connect.</text><text x="32" y="117" fill="#8b949e" font-size="13">Run the workflow in your profile repository to load real activity.</text>'
@@ -107,7 +107,7 @@ def main():
             days = cache['days']
     intro = header(config)
     graph = heatmap(days)
-    readme = f'''<p align="center">\n  <img src="assets/profile.svg" width="960" alt="{ESC(config['name'], quote=True)} — software engineering and DevOps" />\n</p>\n\nI’m focused on building useful software and improving the path from development to reliable delivery.\n'''
+    readme = f'''<p align="center">\n  <img src="assets/profile.svg" width="960" alt="{ESC(config['name'], quote=True)} — software engineering and DevOps" />\n</p>\n\nM.S. Computer Science student at NC State, based in Raleigh, NC. Building backend systems, full-stack products, and grounded AI tools. Seeking software engineering opportunities for May 2027 graduation.\n'''
     if config['stack']:
         readme += '\n### Toolbox\n\n' + ' · '.join(config['stack']) + '\n'
     if config['projects']:
